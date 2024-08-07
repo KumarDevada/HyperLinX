@@ -94,7 +94,7 @@ function HomePage({isLoggedIn}) {
             {loading && <Loader />}
 
             <div className='flex items-start justify-center'>
-                <h1 className='text-center text-3xl sm:text-5xl font-bold bg-gradient-to-r from-amber-500 to-pink-500 bg-clip-text text-transparent font-montserrat'>HyperLinX</h1> 
+                <a href='/' className='text-center text-3xl sm:text-5xl font-bold bg-gradient-to-r from-amber-500 to-pink-500 bg-clip-text text-transparent font-montserrat'>HyperLinX</a> 
                 <img src={logo} style={{width:'25px'}} alt="logo" />
             </div>
             <hr className="w-full  m-auto  border-slate-500 my-4" />
@@ -136,14 +136,14 @@ function HomePage({isLoggedIn}) {
                 {(user?.links.length === 0) && <h1 className=' text-slate-600 mt-16 font-semibold text-center'>No links added yet...</h1>}
                 {user?.links?.map((link) => (
                     <div className=' mb-3 cursor-pointer' key={link._id}> 
-                        <div className="flex flex-col gap-2 w-full text-[10px] sm:text-xs z-50">
+                        <div className="flex flex-col gap-2 w-full text-[10px] sm:text-xs ">
                         <div
                             className="succsess-alert cursor-default flex items-center justify-between w-full h-14 sm:h-16 rounded-lg bg-[#232531] px-[10px]"
                         >
                             <div className="flex gap-2">
                             <div className="text-[#2b9875] bg-white/5 backdrop-blur-xl pt-2 px-2 rounded-full">
                             {/* <i className="fa-solid fa-pen-to-square text-xl"></i> */}
-                            <img src={logo} style={{width:'30px'}} alt="logo" />
+                            <img src={logo} style={{width:'30px', zIndex:1}} alt="logo" />
                             </div>
                             <div className='cursor-pointer' onClick={() => {handleClick(link.link)}}>
                                 <p className="text-slate-300 text-lg font-semibold">{link.websiteName}</p>

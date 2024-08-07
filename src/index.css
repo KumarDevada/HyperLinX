@@ -91,7 +91,6 @@
 
   /* From Uiverse.io by AbanoubMagdy1 */ 
 .loader {
-    z-index: 5;
     --dim: 3rem;
     width: var(--dim);
     height: var(--dim);
