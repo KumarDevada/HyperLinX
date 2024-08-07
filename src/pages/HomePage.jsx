@@ -71,7 +71,9 @@ function HomePage({isLoggedIn}) {
       };
 
     const handleClick = (link) => {
-        window.open(link, '_blank', 'noopener,noreferrer');
+        const isAbsolute = link.startsWith('http://') || link.startsWith('https://');
+        const finalLink = isAbsolute ? link : `http://${link}`;
+        window.open(finalLink, '_blank', 'noopener,noreferrer');
     }
 
     const handleCopy = (link) => {
@@ -102,7 +104,7 @@ function HomePage({isLoggedIn}) {
                     <i className="fa-solid fa-user text-xl mx-2.5 my-1 text-slate-500"></i>
                 </div>
                 <div className='flex flex-col'>
-                    <h1 className='mb-0 text-2xl sm:text-3xl font-semibold text-slate-600 font-montserrat'>{trimLink((user) ? user.username : 'User', 40)}</h1>
+                    <h1 className='mb-0 text-2xl  font-semibold text-slate-600 font-montserrat'>{trimLink((user) ? user.username : 'User', 12)}</h1>
                     <p className='text-xs font-semibold font-montserrat text-slate-400'>Public Url</p>
                     <p className='text-[10px] sm:text-xs text-slate-500'>{publiclink}</p>
                 </div>
