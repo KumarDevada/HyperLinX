@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import Loader from '../components/Loader';
@@ -8,9 +8,17 @@ function UpdateLinkForm() {
     const [link, setlink] = useState('');
     const [loading, setloading] = useState(false)
     const navigate = useNavigate();
-    const { uniqueKey, linkId } = useParams();
+    const { uniqueKey, linkId, name, oldlink } = useParams();
     const localapi = `http://localhost:5000/api/users/${uniqueKey}/links/${linkId}`
     const remote = `https://hyperlinx-backend.onrender.com/api/users/${uniqueKey}/links/${linkId}`
+
+    useEffect(() => {
+        const decodedName = decodeURIComponent(name);
+        const decodedLink = decodeURIComponent(oldlink);
+        // console.log(decodedLink);
+        setwebsiteName(decodedName)
+        setlink(decodedLink)
+    }, [])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -20,6 +28,8 @@ function UpdateLinkForm() {
             if (response && response.status === 201) {
                 setloading(false)
                 navigate(`/${uniqueKey}`);
+                
+
             } else {
                 setloading(false)
                 alert(response.data.message)

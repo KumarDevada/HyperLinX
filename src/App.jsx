@@ -22,7 +22,7 @@ function App() {
                 <Route exact path="/signup" element={<SignupPage setIsLoggedIn={setIsLoggedIn} />} />
                 <Route exact path="/:uniqueKey" element={<HomePage isLoggedIn={isLoggedIn} />} />
                 <Route exact path='/:uniqueKey/newlink' element={<NewLinkForm />} />
-                <Route exact path='/:uniqueKey/newlink/:linkId' element={<UpdateLinkForm />} />
+                <Route exact path='/:uniqueKey/newlink/:linkId/:name/:oldlink' element={<UpdateLinkForm />} />
             </Routes>
         </Router>
     
